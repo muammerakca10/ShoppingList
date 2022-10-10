@@ -28,14 +28,28 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
         tableView.delegate = self
         
-        navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCategorie))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCategory))
+        
     }
     
-    @objc func addCategorie(){
-        let ac = UIAlertController(title: "Add Categorie", message: "Please enter category name you want to add.", preferredStyle: .actionSheet)
-        ac.addAction(UIAlertAction(title: "Add", style: .default,handler: { (categoryName) in
-            
-        }))
+    @objc func addCategory(){
+        let ac = UIAlertController(title: "Add Category", message: "Please enter category name you want to add.", preferredStyle: .actionSheet)
+        
+        ac.addTextField { (textfield) in
+            textfield.placeholder = "Add Category name"
+        }
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
+            guard let newName = ac?.textFields?[0].text else { return }
+            if !newName.isEmpty {
+                self?.categories.append(newName)
+            }
+            self?.tableView.reloadData()
+        })
+        
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,10 +73,13 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let ac = UIAlertController(title: "Are you sure?", message: "When you delete the category, the items inside the category are also deleted.", preferredStyle: .actionSheet)
+            
             ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (asd) in
                 self.categories.remove(at: indexPath.row)
                 tableView.reloadData()
             }))
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
             present(ac, animated: true)
         }
     }
