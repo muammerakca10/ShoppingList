@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="trying" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShoppingListNew" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,12 +30,24 @@
         <!--Detail View Controller-->
         <scene sceneID="dWS-ir-bKo">
             <objects>
-                <viewController id="Wbt-7J-Fcd" customClass="DetailViewController" customModule="trying" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wbt-7J-Fcd" customClass="DetailViewController" customModule="ShoppingListNew" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzo-wt-BYi">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lPR-Ex-d05">
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Grt-en-8bP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lPR-Ex-d05" firstAttribute="leading" secondItem="Grt-en-8bP" secondAttribute="leading" id="ImX-fE-Eea"/>
+                            <constraint firstItem="lPR-Ex-d05" firstAttribute="top" secondItem="Grt-en-8bP" secondAttribute="top" id="Ina-eH-uMN"/>
+                            <constraint firstItem="Grt-en-8bP" firstAttribute="bottom" secondItem="lPR-Ex-d05" secondAttribute="bottom" id="Qsr-Wc-e3z"/>
+                            <constraint firstItem="Grt-en-8bP" firstAttribute="trailing" secondItem="lPR-Ex-d05" secondAttribute="trailing" id="rsz-1L-oE1"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RQu-QJ-9dK"/>
                 </viewController>

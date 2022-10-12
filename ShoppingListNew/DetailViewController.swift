@@ -7,13 +7,22 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    var detailList = [String]()
+    
+    var tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Liste"
+        title = "List"
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
+    
+    
     
 
 }
