@@ -11,6 +11,8 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
+    var categoryNameVC = ""
+    
     var categories = ["Dairy","Fruits","Spices","Paper/Wrap","Joiletries","Vegetables","Frozen Food","Canned Goods","Pet Items","Household","Cereal","Pasta Rice","Breads","Bevereages","Baking","Deli","Meat/Fish","Condiments","Sauces/Oils","Snacks","Others"]
     
     var tableView : UITableView = {
@@ -61,6 +63,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         var configuration = cell.defaultContentConfiguration()
         configuration.text = categories[indexPath.row]
+        categoryNameVC = categories[indexPath.row]
         cell.contentConfiguration = configuration
         return cell
     }
@@ -81,6 +84,13 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
             present(ac, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            let destination = segue.destination as! DetailViewController
+            destination.categoryName = categoryNameVC
         }
     }
     
