@@ -11,7 +11,7 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
-    var categoryNameVC = ""
+    var selectedCategoryNameVC = ""
     
     var categories = ["Dairy","Fruits","Spices","Paper/Wrap","Joiletries","Vegetables","Frozen Food","Canned Goods","Pet Items","Household","Cereal","Pasta Rice","Breads","Bevereages","Baking","Deli","Meat/Fish","Condiments","Sauces/Oils","Snacks","Others"]
     
@@ -32,6 +32,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCategory))
         
+        
+        print(categories)
     }
     
     @objc func addCategory(){
@@ -59,18 +61,29 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = UITableViewCell()
         
         var configuration = cell.defaultContentConfiguration()
-        configuration.text = categories[indexPath.row]
-        categoryNameVC = categories[indexPath.row]
+        let category = categories[indexPath.row]
+        configuration.text = category
+        
         cell.contentConfiguration = configuration
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        selectedCategoryNameVC = categories[indexPath.row]
+        
         performSegue(withIdentifier: "toDetailVC", sender: nil)
+        print(selectedCategoryNameVC)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            let destination = segue.destination as! DetailViewController
+            destination.categoryName = selectedCategoryNameVC
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -86,14 +99,5 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             present(ac, animated: true)
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailVC" {
-            let destination = segue.destination as! DetailViewController
-            destination.categoryName = categoryNameVC
-        }
-    }
-    
-    
 }
 
