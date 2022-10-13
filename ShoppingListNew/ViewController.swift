@@ -37,23 +37,24 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func addCategory(){
-        let ac = UIAlertController(title: "Add Category", message: "Please enter category name you want to add.", preferredStyle: .actionSheet)
+        let ac = UIAlertController(title: "Add Category", message: "Please enter category name you want to add.", preferredStyle: .alert)
         
-        ac.addTextField { (textfield) in
-            textfield.placeholder = "Add Category name"
-        }
+        ac.addTextField()
+        ac.textFields![0].placeholder = "Write category name in here"
+        ac.textFields![0].backgroundColor = .cyan
         
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
-            guard let newName = ac?.textFields?[0].text else { return }
+            guard let newName = ac?.textFields![0].text else { return }
             if !newName.isEmpty {
                 self?.categories.append(newName)
+                //self?.tableView.reloadData()
             }
             self?.tableView.reloadData()
         })
         
         
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
+        self.present(ac, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
