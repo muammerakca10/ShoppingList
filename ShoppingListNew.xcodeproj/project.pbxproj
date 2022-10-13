@@ -14,6 +14,7 @@
 		4520722428F431E20034F40B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4520722328F431E20034F40B /* Assets.xcassets */; };
 		4520722728F431E20034F40B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4520722528F431E20034F40B /* LaunchScreen.storyboard */; };
 		4520722F28F4327A0034F40B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520722E28F4327A0034F40B /* DetailViewController.swift */; };
+		45DC2CC428F81B0C001929ED /* isFirstTimeOpenedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DC2CC328F81B0C001929ED /* isFirstTimeOpenedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4520722628F431E20034F40B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4520722828F431E20034F40B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4520722E28F4327A0034F40B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		45DC2CC328F81B0C001929ED /* isFirstTimeOpenedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isFirstTimeOpenedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				4520721A28F431D20034F40B /* AppDelegate.swift */,
+				45DC2CC328F81B0C001929ED /* isFirstTimeOpenedControl.swift */,
 				4520721C28F431D20034F40B /* SceneDelegate.swift */,
 				4520722E28F4327A0034F40B /* DetailViewController.swift */,
 				4520721E28F431D20034F40B /* ViewController.swift */,
@@ -145,6 +148,7 @@
 				4520721B28F431D20034F40B /* AppDelegate.swift in Sources */,
 				4520721D28F431D20034F40B /* SceneDelegate.swift in Sources */,
 				4520722F28F4327A0034F40B /* DetailViewController.swift in Sources */,
+				45DC2CC428F81B0C001929ED /* isFirstTimeOpenedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

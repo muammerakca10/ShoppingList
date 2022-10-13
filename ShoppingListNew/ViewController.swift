@@ -24,6 +24,13 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UIApplication.isFirstLaunch(){
+            //let userDefaults = UserDefaults.standard
+            print("First time")
+        } else {
+            print("not first time")
+        }
+        
         title = "Shopping Categories"
         view.addSubview(tableView)
         tableView.frame = view.bounds
@@ -33,7 +40,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addCategory))
         
         
-        print(categories)
+        //print(categories)
     }
     
     @objc func addCategory(){
@@ -41,7 +48,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         ac.addTextField()
         ac.textFields![0].placeholder = "Write category name in here"
-        ac.textFields![0].backgroundColor = .cyan
         
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
             guard let newName = ac?.textFields![0].text else { return }
